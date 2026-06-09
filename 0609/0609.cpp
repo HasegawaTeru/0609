@@ -18,10 +18,6 @@ public:
 	Player(std::shared_ptr<Weapon> weapon1) : weapon(weapon1)
 	{
 	}
-	void Attack()
-	{
-		weapon->Use();
-	}
 };
 
 int main()
