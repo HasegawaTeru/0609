@@ -7,10 +7,6 @@ public:
 	void Use() {}
 };
 
-class Sword : public Weapon
-{
-};
-
 class Player
 {
 	Weapon* weapon = nullptr;
