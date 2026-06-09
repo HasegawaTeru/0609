@@ -7,6 +7,10 @@ public:
 	void Use() {}
 };
 
+class Sword : public Weapon
+{
+};
+
 class Player
 {
 	std::shared_ptr<Weapon> weapon;
@@ -22,21 +26,11 @@ public:
 
 int main()
 {
-	auto a = std::make_shared<Player>(std::make_shared<Weapon>());
+	auto sword = std::make_shared<Sword>();
 
-	std::cout << "a: " << a.use_count() << std::endl;
+	std::cout << sword.use_count() << std::endl;
+	//　所有権を渡す
+	Player p1(std::move(sword));
 
-	auto b = a;
-
-	std::cout << "a: " << a.use_count() << std::endl;
-	std::cout << "b: " << b.use_count() << std::endl;
-
-	auto c = std::move(a);
-
-	std::cout << "a: " << a.use_count() << std::endl;
-	std::cout << "b: " << b.use_count() << std::endl;
-	std::cout << "c: " << c.use_count() << std::endl;
-
-	assert(a != nullptr);
-	a->Attack();
+	std::cout << sword.use_count() << std::endl;
 }
